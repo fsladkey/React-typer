@@ -2,7 +2,11 @@ const noop = () => {}
 let handleChar, handleBackspace, handleTab;
 handleChar = handleBackspace = handleTab = noop
 
-const skippedChars = ['Shift', 'Meta', 'Arrow Right', 'Arrow Up', 'Arrow Down']
+const skippedChars = ['Shift', 'Meta', 'Arrow']
+
+function shouldSkip(char) {
+  return skippedChars.any(skip => char.includes(skip))
+}
 
 function handler(e) {
   e.preventDefault();
